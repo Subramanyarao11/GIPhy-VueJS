@@ -4,16 +4,30 @@
       Search and Share <br />
       GIFs Instantly
     </h1>
-    <Search />
+    <Search @search="searchGifs"/>
+    <Giflist :gifs="gifs"/>
   </div>
 </template>
 
 
 <script>
   import Search from './components/Search.vue'
+  import Giflist from './components/Giflist.vue'
 export default{
 name: 'App',
 components: {
-	Search
-}}
+	Search,
+    Giflist,
+},
+data() {
+    return {
+      gifs: [],
+    };
+  },
+  methods: {
+    searchGifs(gifs) {
+      this.gifs = gifs;
+    },
+  }
+}
 </script>
